@@ -1,0 +1,2 @@
+I ran docker run -p 127.0.0.1:3000:8080 devopsdockeruh/simple-web-service:ubuntu server
+and got the message on my browser at the port 3000. localhost:3000
