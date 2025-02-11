@@ -1,0 +1,33 @@
+Removed env variables from the Dockerfiles and the ports from the compose file and it started to work
+
+version: '3.8'
+
+services:
+  front-end:
+    build: ../devopsExampleRepo/example-frontend
+    container_name: this-is-frontv2
+    environment:
+    - REACT_APP_BACKEND_URL=http://localhost
+  back-end:
+    build: ../devopsExampleRepo/example-backend
+    container_name: this-is-backv2
+    environment:
+    - REDIS_HOST=cache
+    - POSTGRES_HOST=db
+    - POSTGRES_PASSWORD=example
+    - REQUEST_ORIGIN=http://localhost
+  cache:
+    image: redis
+  db:
+    image: postgres:17.2
+    restart: unless-stopped
+    volumes:
+    - ./database:/var/lib/postgresql/data
+    environment:
+    - POSTGRES_PASSWORD=example
+  nginx:
+     image: nginx:1.27.4
+     volumes:
+     - ./nginx.conf:/etc/nginx/nginx.conf
+     ports:
+     - 80:80
