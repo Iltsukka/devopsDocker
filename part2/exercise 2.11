@@ -1,0 +1,1 @@
+Hello, i dockerized my ohtuprokti app that was running on python flask configuration, created a docker file for it and compose yml file. Had some issues with flask but managed to solve most of them. Had to modify the source code for a little bit as suggested per ChatGPT to get flask install to run correctly in docker file.
